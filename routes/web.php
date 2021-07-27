@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\SocialiteAuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+
+
 
 
 /*
@@ -57,7 +61,17 @@ Route::get('/auth/redirect', function () {
 });
 
 Route::get('/auth/callback', function () {
+
     $user = Socialite::driver('github')->user();
 
-    // dd($user->token)
 });
+
+Route::get('/auth/google/redirect', [SocialiteAuthController::class, 'googleRedirect']);
+
+Route::get('/auth/google-callback', [SocialiteAuthController::class, 'loginWithGoogle']);
+
+
+
+
+
+
