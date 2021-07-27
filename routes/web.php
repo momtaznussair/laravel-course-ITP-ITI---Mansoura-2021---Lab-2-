@@ -66,9 +66,9 @@ Route::get('/auth/callback', function () {
 
 });
 
-Route::get('/auth/google/redirect', [SocialiteAuthController::class, 'googleRedirect']);
+Route::get('/auth/google', 'App\Http\Controllers\SocialiteAuthController@googleRedirect');
 
-Route::get('/auth/google-callback', [SocialiteAuthController::class, 'loginWithGoogle']);
+Route::get('auth/google/callback', 'App\Http\Controllers\SocialiteAuthController@loginWithGoogle');
 
 
 
